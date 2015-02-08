@@ -26,6 +26,14 @@
 		24DD6CFA1134B3F500162E58 /* ComFacebookModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComFacebookModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComFacebookModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComFacebookModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComFacebookModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComFacebookModuleAssets.m */; };
+		7D721E711A87DBAF009D106A /* FBSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D721E6A1A87DB2F009D106A /* FBSBJSON.m */; };
+		7D721E721A87DBAF009D106A /* FBSBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D721E6C1A87DB2F009D106A /* FBSBJsonBase.m */; };
+		7D721E731A87DBAF009D106A /* FBSBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D721E6E1A87DB2F009D106A /* FBSBJsonParser.m */; };
+		7D721E741A87DBAF009D106A /* FBSBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D721E701A87DB2F009D106A /* FBSBJsonWriter.m */; };
+		7D721E751A87DBB9009D106A /* FBSBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D721E691A87DB2F009D106A /* FBSBJSON.h */; };
+		7D721E761A87DBB9009D106A /* FBSBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D721E6B1A87DB2F009D106A /* FBSBJsonBase.h */; };
+		7D721E771A87DBB9009D106A /* FBSBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D721E6D1A87DB2F009D106A /* FBSBJsonParser.h */; };
+		7D721E781A87DBB9009D106A /* FBSBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D721E6F1A87DB2F009D106A /* FBSBJsonWriter.h */; };
 		AA747D9F0F9514B9006C5449 /* ComFacebook_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComFacebook_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		EA625DDD1A5B0EDC004E82CA /* ComFacebookLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = EA625DDB1A5B0EDC004E82CA /* ComFacebookLikeButton.h */; };
@@ -52,6 +60,14 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* ComFacebookModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComFacebookModuleAssets.h; path = Classes/ComFacebookModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComFacebookModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComFacebookModuleAssets.m; path = Classes/ComFacebookModuleAssets.m; sourceTree = "<group>"; };
+		7D721E691A87DB2F009D106A /* FBSBJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSBJSON.h; sourceTree = "<group>"; };
+		7D721E6A1A87DB2F009D106A /* FBSBJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBSBJSON.m; sourceTree = "<group>"; };
+		7D721E6B1A87DB2F009D106A /* FBSBJsonBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSBJsonBase.h; sourceTree = "<group>"; };
+		7D721E6C1A87DB2F009D106A /* FBSBJsonBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBSBJsonBase.m; sourceTree = "<group>"; };
+		7D721E6D1A87DB2F009D106A /* FBSBJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSBJsonParser.h; sourceTree = "<group>"; };
+		7D721E6E1A87DB2F009D106A /* FBSBJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBSBJsonParser.m; sourceTree = "<group>"; };
+		7D721E6F1A87DB2F009D106A /* FBSBJsonWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSBJsonWriter.h; sourceTree = "<group>"; };
+		7D721E701A87DB2F009D106A /* FBSBJsonWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBSBJsonWriter.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ComFacebook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComFacebook_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComFacebook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComFacebook.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +125,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7D721E681A87DB2F009D106A /* JSON */,
 				24DE9E0F11C5FE74003F90F6 /* ComFacebookModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* ComFacebookModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* ComFacebookModule.h */,
@@ -130,6 +147,22 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		7D721E681A87DB2F009D106A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				7D721E691A87DB2F009D106A /* FBSBJSON.h */,
+				7D721E6A1A87DB2F009D106A /* FBSBJSON.m */,
+				7D721E6B1A87DB2F009D106A /* FBSBJsonBase.h */,
+				7D721E6C1A87DB2F009D106A /* FBSBJsonBase.m */,
+				7D721E6D1A87DB2F009D106A /* FBSBJsonParser.h */,
+				7D721E6E1A87DB2F009D106A /* FBSBJsonParser.m */,
+				7D721E6F1A87DB2F009D106A /* FBSBJsonWriter.h */,
+				7D721E701A87DB2F009D106A /* FBSBJsonWriter.m */,
+			);
+			name = JSON;
+			path = Classes/JSON;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -137,6 +170,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D721E751A87DBB9009D106A /* FBSBJSON.h in Headers */,
+				7D721E761A87DBB9009D106A /* FBSBJsonBase.h in Headers */,
+				7D721E771A87DBB9009D106A /* FBSBJsonParser.h in Headers */,
+				7D721E781A87DBB9009D106A /* FBSBJsonWriter.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* ComFacebook_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComFacebookModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComFacebookModuleAssets.h in Headers */,
@@ -215,6 +252,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D721E711A87DBAF009D106A /* FBSBJSON.m in Sources */,
+				7D721E721A87DBAF009D106A /* FBSBJsonBase.m in Sources */,
+				7D721E731A87DBAF009D106A /* FBSBJsonParser.m in Sources */,
+				7D721E741A87DBAF009D106A /* FBSBJsonWriter.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* ComFacebookModule.m in Sources */,
 				EA625DDE1A5B0EDC004E82CA /* ComFacebookLikeButton.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* ComFacebookModuleAssets.m in Sources */,

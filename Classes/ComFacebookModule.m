@@ -6,6 +6,7 @@
  */
 
 #import "ComFacebookModule.h"
+#import "JSON/FBSBJSON.h"
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
@@ -219,6 +220,86 @@ NSTimeInterval meRequestTimeout = 180.0;
         }
     }
 }
+
+#pragma mark Internal
+
+-(NSString*)convertParams:(NSMutableDictionary*)params
+{
+  NSString* httpMethod = nil;
+  for (NSString *key in [params allKeys])
+  {
+    id param = [params objectForKey:key];
+    
+    // convert to blob
+    if ([param isKindOfClass:[TiFile class]])
+    {
+      TiFile *file = (TiFile*)param;
+      if ([file size] > 0)
+      {
+        param = [file toBlob:nil];
+      }
+      else
+      {
+        // empty file?
+        param = [[[TiBlob alloc] initWithData:[NSData data] mimetype:@"text/plain"] autorelease];
+      }
+    }
+    
+    // this is an attachment, we need to convert to POST and switch to blob
+    if ([param isKindOfClass:[TiBlob class]])
+    {
+      httpMethod = @"POST";
+      TiBlob *blob = (TiBlob*)param;
+      VerboseLog(@"[DEBUG] detected blob with mime: %@",[blob mimeType]);
+      if ([[blob mimeType] hasPrefix:@"image/"])
+      {
+        UIImage *image = [blob image];
+        [params setObject:image forKey:key];
+      }
+      else
+      {
+        NSData *data = [blob data];
+        [params setObject:data forKey:key];
+      }
+    }
+        // All other arguments need to be encoded as JSON if they aren't strings
+        else if (![param isKindOfClass:[NSString class]]) {
+      FBSBJSON * stringifier = [[FBSBJSON alloc] init];
+            NSString* json_value = [stringifier stringWithObject:param allowScalar:YES error:nil];
+            if (json_value == nil) {
+                NSLog(@"Unable to encode argument %@:%@ to JSON: Encoding as ''",key,param);
+        json_value = @"";
+            }
+            [params setObject:json_value forKey:key];
+      [stringifier release];
+        }
+  }
+  return httpMethod;
+}
+
+//This is here for backwards compatibility to replace ENSURE_CLASS.
+//As of writing, building for 3.1.0 breaks 3.0.0 otherwise.
+-(NSString *)errorStringIf:(id)value isNotClass:(NSString *)typeName forArgument:(NSString *)argName
+{
+  NSString * valueType;
+  if([value isKindOfClass:[NSString class]]) valueType = @"a string";
+  else if([value isKindOfClass:[NSNumber class]]) valueType = @"a number";
+  else if([value isKindOfClass:[NSArray class]]) valueType = @"an array";
+  else if([value isKindOfClass:[NSDictionary class]]) valueType = @"an object";
+  else if([value isKindOfClass:[KrollCallback class]]) valueType = @"a function";
+  else if([value isKindOfClass:[KrollWrapper class]]) valueType = @"a function";
+  else
+  {
+    valueType = [value description];
+  }
+  return [NSString stringWithFormat:@"%@ takes a %@, but was passed %@ instead",argName,typeName,valueType];
+}
+#define FACEBOOK_ENSURE_TYPE(x,t,n) \
+if(![x isKindOfClass:[t class]]){ \
+[self throwException:TiExceptionInvalidType subreason: \
+[self errorStringIf:x isNotClass:n forArgument:@"" #x] location:CODELOCATION]; \
+}
+
 
 #pragma mark Public APIs
 
@@ -679,12 +760,21 @@ NSTimeInterval meRequestTimeout = 180.0;
 -(void)requestWithGraphPath:(id)args
 {
     VerboseLog(@"[DEBUG] facebook requestWithGraphPath");
-    
+   
+    ENSURE_ARG_COUNT(args,4);
+
     NSString* path = [args objectAtIndex:0];
     NSMutableDictionary* params = [args objectAtIndex:1];
     NSString* httpMethod = [args objectAtIndex:2];
     KrollCallback* callback = [args objectAtIndex:3];
-    
+   
+    FACEBOOK_ENSURE_TYPE(path, NSString, @"a string");
+    FACEBOOK_ENSURE_TYPE(params, NSDictionary, @"an object");
+    FACEBOOK_ENSURE_TYPE(httpMethod, NSString, @"a string");
+    FACEBOOK_ENSURE_TYPE(callback, KrollCallback, @"a function");
+
+    [self convertParams:params];
+
     TiThreadPerformOnMainThread(^{
         FBRequestConnection *connection = [[FBRequestConnection alloc] init];
         connection.errorBehavior = FBRequestConnectionErrorBehaviorReconnectSession
@@ -819,5 +909,6 @@ NSTimeInterval meRequestTimeout = 180.0;
         }
     }
 }
+
 
 @end
